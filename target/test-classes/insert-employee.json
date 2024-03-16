@@ -1,0 +1,20 @@
+{
+  "employeeFirstName": "Samantha",
+  "employeeLastName": "Burns",
+  "employeeEmail": "samantha_burns@ngo.gov",
+  "employeeJobTitle": "Manager"
+}
+
+{
+  "employeeFirstName": "Barb",
+  "employeeLastName": "Smith",
+  "employeeEmail": "barb_smith@gmail.com",
+  "employeeJobTitle": "Manager"
+}
+
+{
+  "employeeFirstName": "Don",
+  "employeeLastName": "Jones",
+  "employeeEmail": "don_jones@gmail.com",
+  "employeeJobTitle": "Manager"
+}

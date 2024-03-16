@@ -1,7 +1,12 @@
 package pet.store.controller.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +22,7 @@ import pet.store.service.PetStoreService;
 @RequestMapping("/pet_store")
 @Slf4j
 public class PetStoreController {
-	
+
 	@Autowired
 	private PetStoreService petStoreService;
 
@@ -27,12 +32,50 @@ public class PetStoreController {
 		log.info("Creating Pet Store {}", petStoreData);
 		return petStoreService.savePetStore(petStoreData);
 	}
-	@PutMapping("/pet_store/{petStoreId}")
-	@ResponseStatus(code = HttpStatus.OK)
+
+	@PutMapping("/{petStoreId}")
 	public PetStoreData putPetStore(@RequestBody PetStoreData petStoreData, @PathVariable Long petStoreId) {
 		petStoreData.setPetStoreId(petStoreId);
 		log.info("Updating Pet Store {} with {}", petStoreId, petStoreData);
 		return petStoreService.savePetStore(petStoreData);
-	
+
+	}
+
+	@PostMapping("/{petStoreId}/employee")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public PetStoreEmployee insertEmployee(@PathVariable Long petStoreId,
+			@RequestBody PetStoreEmployee petStoreEmployee) {
+		log.info("Creating employee {} for pet store with ID={}", petStoreEmployee.getEmployeeId(), petStoreId);
+
+		return petStoreService.saveEmployee(petStoreId, petStoreEmployee);
+	}
+
+	@PostMapping("/{petStoreId}/customer")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public PetStoreCustomer insertCustomer(@PathVariable Long petStoreId,
+			@RequestBody PetStoreCustomer petStoreCustomer) {
+		log.info("Creating customer {} for pet store with ID={}", petStoreCustomer.getCustomerId(), petStoreId);
+
+		return petStoreService.saveCustomer(petStoreId, petStoreCustomer);
+	}
+
+	@GetMapping
+	public List<PetStoreData> listAllPetStores() {
+		log.info("Listing all pet stores.");
+		return petStoreService.retrieveAllPetStores();
+	}
+
+	@GetMapping("/{petStoreId}")
+	public PetStoreData getPetStoreById(@PathVariable Long petStoreId) {
+		log.info("Retrieving pet store with ID={}", petStoreId);
+		return petStoreService.retrievePetStoreById(petStoreId);
+	}
+
+	@DeleteMapping("/{petStoreId}")
+	public Map<String, String> deletePetStoreById(@PathVariable Long petStoreId) {
+		log.info("Delete pet store with ID={}", petStoreId);
+		petStoreService.deletePetStoreById(petStoreId);
+
+		return Map.of("message", "Deletion of pet store with ID=" + petStoreId + " was successful.");
 	}
 }

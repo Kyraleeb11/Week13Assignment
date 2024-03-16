@@ -1,0 +1,26 @@
+{
+  "petStoreName": "Really Cool Pet Store",
+  "petStoreAddress": "8395 North Bladford Lane",
+  "petStoreCity": "Gangrene",
+  "petStoreState": "Georgia",
+  "petStoreZip" : "12345",
+  "petStorePhone": "303-322-4995"
+}
+
+{
+  "petStoreName": "Best Pet Store",
+  "petStoreAddress": "2345 Why Lane",
+  "petStoreCity": "Springfield",
+  "petStoreState": "Georgia",
+  "petStoreZip" : "72895",
+  "petStorePhone": "404-322-4995"
+  }
+  
+  {
+  "petStoreName": "Best in the West Pet Store",
+  "petStoreAddress": "7536 String Lane",
+  "petStoreCity": "Boise",
+  "petStoreState": "Idaho",
+  "petStoreZip" : "67321",
+  "petStorePhone": "785-322-4995"
+}
